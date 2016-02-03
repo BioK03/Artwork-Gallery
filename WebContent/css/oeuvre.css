@@ -1,0 +1,131 @@
+.Tcenter {
+	text-align: center;
+}
+
+.Tleft {
+	text-align: left;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    background-size: 100% 100%;
+}
+
+.Dinline {
+	display: inline;
+}
+
+.tablePerso, .tablePerso tbody {
+	width: 100%;
+	display: inline-block;
+	float: left;
+}
+
+table td[class*=col-], table th[class*=col-] {
+	float: left;
+}
+
+.noPadding {
+	padding: 0;
+}
+
+.Dblock {
+	display: block !important;
+}
+
+.aWhite, .aWhite:focus, .aWhite:visited, .aWhite:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.DiBlock {
+	display: inline-block !important;
+}
+
+.tablePerso td {
+	border: 0;
+}
+
+.tablePerso tr {
+	border-bottom: 1px solid #000000;
+}
+
+.pageinner {
+	margin: 0 auto;
+	width: 50%;
+	display: block;
+	padding: 3em;
+
+}
+
+.container {
+	display: block;
+	width: 100%;
+	height: 90%;
+	overflow-y: auto;
+}
+
+.containerFooter {
+	position: absolute;
+	display: block;
+	width: 100%;
+	bottom: 0;
+	height: 10%;
+	background-color: #000000;
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.imgFooter {
+	display: block;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+    
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    
+    -webkit-transition: 0.3s ease;
+        -moz-transition: 0.3s ease;
+         -ms-transition: 0.3s ease;
+          -o-transition: 0.3s ease;
+             transition: 0.3s ease;
+}
+
+.containerFooter:hover > .imgFooter {
+	filter: blur(0px);
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+}
+
+.menuFooter p {
+	z-index: 2;
+	width: 20%;
+	text-align: center;
+	display: inline-block;
+}
+
+.menuFooter {
+	position: relative;
+	top: calc(-50% - 0.5em);
+	width: 80%;
+	font-weight: bold;
+	left: 10%;
+	color: #FFFFFF;
+	display: block;
+}
+
+input[type="text"] {
+	border-radius: 0.3em;
+}
