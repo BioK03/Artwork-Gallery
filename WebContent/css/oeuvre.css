@@ -1,11 +1,3 @@
-.Tcenter {
-	text-align: center;
-}
-
-.Tleft {
-	text-align: left;
-}
-
 body, html {
     height: 100%;
     width: 100%;
@@ -15,10 +7,184 @@ body, html {
     background-size: 100% 100%;
 }
 
+/* ANIMATIONS ///////////////////////////*/
+@-webkit-keyframes placeHolderAnimation {
+  0% {margin-top: 0; opacity: 0;}
+  100% {margin-top: -1.38em; opacity: 1;}
+}
+
+@-moz-keyframes placeHolderAnimation {
+  0% {margin-top: 0; opacity: 0;}
+  100% {margin-top: -1.38em; opacity: 1;}
+}
+
+@-ms-keyframes placeHolderAnimation {
+  0% {margin-top: 0; opacity: 0;}
+  100% {margin-top: -1.38em; opacity: 1;}
+}
+
+@-o-keyframes placeHolderAnimation {
+  0% {margin-top: 0; opacity: 0;}
+  100% {margin-top: -1.38em; opacity: 1;}
+}
+
+@keyframes placeHolderAnimation {
+  0% {margin-top: 0; opacity: 0;}
+  100% {margin-top: -1.38em; opacity: 1;}
+}
+
+
+@-webkit-keyframes placeHolderDeletingAnimation {
+  0% {margin-top: -1.38em; opacity: 1;}
+  100% {margin-top: 0; opacity: 0;}
+}
+
+@-moz-keyframes placeHolderDeletingAnimation {
+  0% {margin-top: -1.38em; opacity: 1;}
+  100% {margin-top: 0; opacity: 0;}
+}
+
+@-ms-keyframes placeHolderDeletingAnimation {
+  0% {margin-top: -1.38em; opacity: 1;}
+  100% {margin-top: 0; opacity: 0;}
+}
+
+@-o-keyframes placeHolderDeletingAnimation {
+  0% {margin-top: -1.38em; opacity: 1;}
+  100% {margin-top: 0; opacity: 0;}
+}
+
+@keyframes placeHolderDeletingAnimation {
+  0% {margin-top: -1.38em; opacity: 1;}
+  100% {margin-top: 0; opacity: 0;}
+}
+
+/* CPH ///////////////////////////*/
+.customPlaceHolder {
+  color: #932611;
+  position: absolute;
+  left: 0;
+  margin-top: -1.38em;
+  margin-left: 1%;
+  font-size: small;
+  opacity: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 1.2em;
+  overflow: hidden;
+
+  -webkit-animation: placeHolderAnimation 0.25s;
+  -moz-animation: placeHolderAnimation 0.25s;
+  -ms-animation: placeHolderAnimation 0.25s;
+  -o-animation: placeHolderAnimation 0.25s;
+  animation: placeHolderAnimation 0.25s;
+}
+
+.deleteCustomPlaceHolder {
+  -webkit-animation: placeHolderDeletingAnimation 0.5s;
+  -moz-animation: placeHolderDeletingAnimation 0.5s;
+  -ms-animation: placeHolderDeletingAnimation 0.5s;
+  -o-animation: placeHolderDeletingAnimation 0.5s;
+  animation: placeHolderDeletingAnimation 0.5s;
+}
+
+/* TEXTE ///////////////////////////*/
+.Tcenter {
+	text-align: center;
+}
+
+.Tleft {
+	text-align: left;
+}
+
+.Tright {
+	text-align: right;	
+}
+
+.josefin {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.ftSize120 {
+	font-size: 120%;
+}
+
+.ftSize150 {
+	font-size: 150%;
+}
+
+/* DISPLAY ///////////////////////////*/
 .Dinline {
 	display: inline;
 }
 
+.Dblock {
+	display: block !important;
+}
+
+.DiBlock {
+	display: inline-block !important;
+}
+
+/* LINKS AND BUTTONS ///////////////////////////*/
+.aWhite, .aWhite:focus, .aWhite:visited, .aWhite:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.aStyle, .aStyle:focus, .aStyle:visited, .aStyle:hover {
+	text-decoration: none;
+	color: #932611;
+}
+
+.btn-expo, .btn-expo:focus, .btn-expo:visited {
+	background-color: #932611;
+	color: #FFFFFF;
+	border: 1px solid #932611;
+		
+	-webkit-transition: 0.3s ease;
+        -moz-transition: 0.3s ease;
+         -ms-transition: 0.3s ease;
+          -o-transition: 0.3s ease;
+             transition: 0.3s ease;
+}
+
+.btn-expo:hover {
+	background-color: #FFFFFF;
+	color: #932611;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	font-size: 120%;
+}
+
+/* INPUT ///////////////////////////*/
+.inputStyle {
+	border-left: 1px solid #932611;
+	border-right: 1px solid #932611;
+	border-top: 0;
+	border-bottom: 0;
+	border-radius: 0;
+	background-color: #FFFFFF;
+}
+
+input[type="text"] {
+	border-radius: 0.3em;
+}
+
+.noOutline {
+	outline: none;
+}
+
+/* MARGIN / PADDING ///////////////////////////*/
+.noPadding {
+	padding: 0;
+}
+
+.mTop2em {
+	margin-top: 2em;
+}
+
+/* OTHER ///////////////////////////*/
 .tablePerso, .tablePerso tbody {
 	width: 100%;
 	display: inline-block;
@@ -29,29 +195,14 @@ table td[class*=col-], table th[class*=col-] {
 	float: left;
 }
 
-.noPadding {
-	padding: 0;
-}
-
-.Dblock {
-	display: block !important;
-}
-
-.aWhite, .aWhite:focus, .aWhite:visited, .aWhite:hover {
-	text-decoration: none;
-	color: #FFFFFF;
-}
-
-.DiBlock {
-	display: inline-block !important;
-}
-
 .tablePerso td {
 	border: 0;
 }
 
 .tablePerso tr {
 	border-bottom: 1px solid #000000;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
 }
 
 .pageinner {
@@ -124,8 +275,4 @@ table td[class*=col-], table th[class*=col-] {
 	left: 10%;
 	color: #FFFFFF;
 	display: block;
-}
-
-input[type="text"] {
-	border-radius: 0.3em;
 }

@@ -6,30 +6,35 @@
 <html>
 	<jsp:include page="../layout/head.jsp"></jsp:include>
 	<body>
-		<h1 class="Tcenter">
-			Listing des Adhérents
-			<a class="Dinline" href="AdherentControleur?action=ajouterAdherent"><span class="glyphicon glyphicon-plus"></span></a>
+		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des Adhérents</h1>
+		<h1>
+			<a class="col-xs-1 aStyle Tcenter" href="AdherentControleur?action=ajouterAdherent">
+				<span class="glyphicon glyphicon-plus"></span>
+			</a>
 		</h1>
-		
 		<div class="pageinner">
-			<TABLE class="tablePerso Tcenter">
-				<TR class="col-xs-12 noPadding">
-					<TH class="col-xs-2 DiBlock noPadding Tcenter">Numero</TH>
-					<TH class="col-xs-3 DiBlock noPadding Tcenter">Nom</TH>
-					<TH class="col-xs-3 DiBlock noPadding Tcenter">Prénom</TH>
-					<TH class="col-xs-4 DiBlock noPadding Tcenter">Ville</TH>
-		
-				</TR>
+			<table class="tablePerso Tcenter">
+				<tr class="col-xs-12 noPadding">
+					<th class="col-xs-2 DiBlock noPadding Tcenter">Numero</th>
+					<th class="col-xs-3 DiBlock noPadding Tcenter">Nom</th>
+					<th class="col-xs-3 DiBlock noPadding Tcenter">Prénom</th>
+					<th class="col-xs-3 DiBlock noPadding Tcenter">Ville</th>
+					<th class="col-xs-1 DiBlock noPadding Tcenter"></th>
+				</tr>
 		
 				<c:forEach items="${mesAdherents}" var="item">
 					<tr class="col-xs-12 noPadding">
 						<td class="col-xs-2 DiBlock noPadding">${item.idAdherent}</td>
 						<td class="col-xs-3 DiBlock noPadding">${item.nomAdherent}</td>
 						<td class="col-xs-3 DiBlock noPadding">${item.prenomAdherent}</td>
-		                <td class="col-xs-4 DiBlock noPadding">${item.villeAdherent}</td>
+		                <td class="col-xs-3 DiBlock noPadding">${item.villeAdherent}</td>
+		                <td class="col-xs-1 DiBlock noPadding">
+		                	<a class="glyphicon glyphicon-edit col-xs-6 noPadding DiBlock aStyle" href="AdherentControleur?action=editerAdherent&id=${item.idAdherent}"></a>
+		                	<a class="glyphicon glyphicon-remove col-xs-6 noPadding DiBlock aStyle" href="AdherentControleur?action=supprimerAdherent&id=${item.idAdherent}"></a>
+		                </td>
 					</tr>
 				</c:forEach>
-			</TABLE>
+			</table>
 		</div>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
 	</body>

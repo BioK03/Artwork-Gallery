@@ -6,18 +6,25 @@
 
 
 	<body>
-		<H1 class="Tcenter"> Ajout d'un adhérent </H1> 
+		<h1 class="Tcenter josefin"> Ajout d'un adhérent </h1> 
 	
-		<DIV class="pageinner Tleft">
-			<FORM  name='identification' method="post" action="AdherentControleur?action=insererAdherent" onsubmit="return teste()">
-			    <INPUT class="col-xs-4" type="text" name="txtnom" value="" placeholder="Nom" id ="nom">
-		        <INPUT class="col-xs-4 col-xs-offset-4" type="text" name="txtprenom" placeholder="Prénom" id ="prenom">
-		        <INPUT class="col-xs-4" type="text" name="txtville" placeholder="Ville" id ="ville">
-		        <br/>
-	          
-		        <INPUT type="submit" name="bt"  value="Ajouter" class="btn btn-primary" > 
-			</FORM>
-			<a href="AdherentControleur?action=listerAdherent">Retour à la liste</a>
+		<div class="pageinner Tleft">
+			<form  name='identification' method="post" action="AdherentControleur?action=insererAdherent" onsubmit="return teste()">
+				<span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
+				    <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="txtnom" 
+				    	value="" placeholder="Nom" id ="nom" customplaceholder="0" autocomplete="off">
+			    </span>
+			    <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
+			        <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="txtprenom"
+			        	placeholder="Prénom" id ="prenom" customplaceholder="0" autocomplete="off">
+		        </span>
+		        <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
+				  <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="txtville"
+					placeholder="Ville" id ="ville" customplaceholder="0" autocomplete="off">	 
+			    </span>         
+		        <input type="submit" name="bt"  value="Ajouter" class="btn btn-expo col-xs-6 col-xs-offset-3 mTop2em" > 
+			</form>
+			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="AdherentControleur?action=listerAdherent">Retour à la liste</a>
 		</DIV>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
 	</body>

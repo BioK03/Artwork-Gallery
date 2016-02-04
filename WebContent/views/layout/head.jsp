@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="refresh" content="0;URL=javascript:fermer();">
 	<title>Expo : Médiathèque De POLYTECH</title>
+	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="lib/bootstrapdatepicker/css/bootstrap-datepicker.min.css"/>
 	<link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css"/>
@@ -25,6 +26,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="AdherentControleur?action=listerAdherent">Adhérents</a></li>
+        <li><a href="OeuvreControleur?action=listerOeuvre">Oeuvres</a></li>
       </ul>
     </div>
   </div>
