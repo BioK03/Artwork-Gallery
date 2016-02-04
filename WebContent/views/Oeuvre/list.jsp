@@ -12,7 +12,7 @@
 		</ul>
 		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des oeuvres en vente</h1>
 		<h1>
-			<a class="col-xs-1 aStyle Tcenter" href="OeuvreControleur?action=add&etat=vente">
+			<a class="col-xs-1 aStyle Tcenter" href="OeuvreController?action=add&etat=vente">
 				<span class="glyphicon glyphicon-plus"></span>
 			</a>
 		</h1>
@@ -35,8 +35,8 @@
 		                <td class="col-xs-2 DiBlock noPadding">${item.prixOeuvrevente}</td>
 		                <td class="col-xs-3 DiBlock noPadding">${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire} (${item.proprietaire.idProprietaire})</td>
 		                <td class="col-xs-1 DiBlock noPadding">
-		                	<a class="glyphicon glyphicon-edit col-xs-6 noPadding DiBlock aStyle" href="AdherentControleur?action=editerAdherent&id=${item.idAdherent}"></a>
-		                	<a class="glyphicon glyphicon-remove col-xs-6 noPadding DiBlock aStyle" href="AdherentControleur?action=supprimerAdherent&id=${item.idAdherent}"></a>
+		                	<a class="glyphicon glyphicon-edit col-xs-6 noPadding DiBlock aStyle" href="OeuvreController?action=edit&id=${item.idAdherent}"></a>
+		                	<a class="glyphicon glyphicon-remove col-xs-6 noPadding DiBlock aStyle" href="OeuvreController?action=delete&id=${item.idAdherent}"></a>
 		                </td>
 					</tr>
 				</c:forEach>

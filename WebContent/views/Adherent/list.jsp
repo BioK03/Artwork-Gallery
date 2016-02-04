@@ -8,7 +8,7 @@
 	<body>
 		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des Adhérents</h1>
 		<h1>
-			<a class="col-xs-1 aStyle Tcenter" href="AdherentControleur?action=add">
+			<a class="col-xs-1 aStyle Tcenter" href="AdherentController?action=add">
 				<span class="glyphicon glyphicon-plus"></span>
 			</a>
 		</h1>
@@ -29,8 +29,8 @@
 						<td class="col-xs-3 DiBlock noPadding">${item.prenomAdherent}</td>
 		                <td class="col-xs-3 DiBlock noPadding">${item.villeAdherent}</td>
 		                <td class="col-xs-1 DiBlock noPadding">
-		                	<a class="glyphicon glyphicon-edit col-xs-6 noPadding DiBlock aStyle" href="AdherentControleur?action=edit&id=${item.idAdherent}"></a>
-		                	<a class="glyphicon glyphicon-remove col-xs-6 noPadding DiBlock aStyle" href="AdherentControleur?action=delete&id=${item.idAdherent}"></a>
+		                	<a class="glyphicon glyphicon-edit col-xs-6 noPadding DiBlock aStyle" href="AdherentController?action=edit&id=${item.idAdherent}"></a>
+		                	<a class="glyphicon glyphicon-remove col-xs-6 noPadding DiBlock aStyle" href="AdherentController?action=delete&id=${item.idAdherent}"></a>
 		                </td>
 					</tr>
 				</c:forEach>

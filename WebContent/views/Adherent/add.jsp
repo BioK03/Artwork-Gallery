@@ -9,7 +9,7 @@
 		<h1 class="Tcenter josefin"> Ajout d'un adhérent </h1> 
 	
 		<div class="pageinner Tleft">
-			<form  name='identification' method="post" action="AdherentControleur?action=insert" onsubmit="return teste()">
+			<form  name='identification' method="post" action="AdherentController?action=insert" onsubmit="return teste()">
 				<span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 				    <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="txtnom" 
 				    	value="" placeholder="Nom" id ="nom" customplaceholder="0" autocomplete="off">
@@ -24,7 +24,7 @@
 			    </span>         
 		        <input type="submit" name="bt"  value="Ajouter" class="btn btn-expo col-xs-6 col-xs-offset-3 mTop2em" > 
 			</form>
-			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="AdherentControleur?action=list">Retour à la liste</a>
+			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="AdherentController?action=list">Retour à la liste</a>
 		</DIV>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
 	</body>

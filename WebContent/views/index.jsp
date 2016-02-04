@@ -11,8 +11,8 @@
 			Gestion de l'exposition 2016
 			Sélectionnez la fonctionnalité voulue:
 			<ul>
-				<li><a href="AdherentControleur?action=add">Ajout Adhérent</a></li>
-				<li><a href="AdherentControleur?action=list">lister les adhérents</a></li>
+				<li><a href="AdherentController?action=add">Ajout Adhérent</a></li>
+				<li><a href="AdherentController?action=list">lister les adhérents</a></li>
 				<li><a href="javascript:fermer()">Quitter</a></li>
 			</ul>
 		</div>
