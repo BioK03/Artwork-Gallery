@@ -7,7 +7,7 @@
 
 	<body>
 		<div class="container">
-			<H1 class="Tcenter"> Nous contacter </H1> 
+			<H1 class="Tcenter josefin"> Nous contacter </H1> 
 			
 		</div>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
