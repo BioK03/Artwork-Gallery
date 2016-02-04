@@ -15,10 +15,10 @@ import dao.Service;
 import meserreurs.*;
 
 /**
- * Servlet implementation class Controleur
+ * Servlet implementation class Controller
  */
-@WebServlet("/Controleur")
-public class Controleur extends HttpServlet {
+@WebServlet("/Controller")
+public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ACTION_TYPE = "action";
 	private static final String INDEX = "index";
@@ -29,7 +29,7 @@ public class Controleur extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Controleur() {
+	public Controller() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -25,6 +25,7 @@ public class Adherent implements Serializable {
 	}
 
 	public Adherent() {
+		this.idAdherent=0;
 	}
 
 	public int getIdAdherent() {

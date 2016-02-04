@@ -17,14 +17,27 @@ public class Service {
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
-			mysql = "insert into adherent  (nom_adherent,prenom_adherent,ville_adherent)  " + "values ('"
-					+ unAdherent.getNomAdherent();
-			mysql += "'" + ",'" + unAdherent.getPrenomAdherent() + "','" + unAdherent.getVilleAdherent() + "')";
+			if(unAdherent.getIdAdherent()!=0)
+			{
+				mysql = "update adherent set (nom_adherent='"+ unAdherent.getNomAdherent()+
+											"',prenom_adherent='"+ unAdherent.getPrenomAdherent()+
+											"',ville_adherent='"+ unAdherent.getVilleAdherent()+"')";
+			}
+			else
+			{
+				mysql = "insert into adherent  (nom_adherent,prenom_adherent,ville_adherent)  " + "values ('"
+						+ unAdherent.getNomAdherent();
+				mysql += "'" + ",'" + unAdherent.getPrenomAdherent() + "','" + unAdherent.getVilleAdherent() + "')";
+			}
 
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {
 			throw e;
 		}
+	}
+	
+	public boolean existe(Adherent unAdherent) throws MonException {
+		return consulterAdherent(unAdherent.getIdAdherent())!=null;
 	}
 
 	// gestion des adherents
