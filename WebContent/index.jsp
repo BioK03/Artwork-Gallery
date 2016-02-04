@@ -9,6 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:redirect url="Controleur?action=index"/>
+	<c:redirect url="Controller?action=index"/>
 </body>
 </html>

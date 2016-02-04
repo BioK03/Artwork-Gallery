@@ -25,8 +25,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="AdherentControleur?action=list">Adhérents</a></li>
-        <li><a href="OeuvreControleur?action=list&etat=vente">Oeuvres</a></li>
+        <li><a href="AdherentController?action=list">Adhérents</a></li>
+        <li><a href="OeuvreController?action=list&etat=vente">Oeuvres</a></li>
       </ul>
     </div>
   </div>
