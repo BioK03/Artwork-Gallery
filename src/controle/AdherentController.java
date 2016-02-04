@@ -83,7 +83,7 @@ public class AdherentController extends HttpServlet {
 			try {
 				Adherent unAdherent = new Adherent();
 				String id = request.getParameter("id");
-				if(!id.isEmpty())
+				if(id!=null)
 				{
 					unAdherent.setIdAdherent(Integer.parseInt(id));
 				}
