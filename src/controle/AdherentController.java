@@ -82,7 +82,11 @@ public class AdherentController extends HttpServlet {
 		else if (INSERER_ADHERENT.equals(actionName)) {
 			try {
 				Adherent unAdherent = new Adherent();
-				unAdherent.setIdAdherent(Integer.parseInt(request.getParameter("id")));
+				String id = request.getParameter("id");
+				if(!id.isEmpty())
+				{
+					unAdherent.setIdAdherent(Integer.parseInt(id));
+				}
 				unAdherent.setNomAdherent(request.getParameter("txtnom"));
 				unAdherent.setPrenomAdherent(request.getParameter("txtprenom"));
 				unAdherent.setVilleAdherent(request.getParameter("txtville"));
