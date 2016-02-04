@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.Service;
-import meserreurs.MonException;
+import dao.AdherentService;
+import meserreurs.MyException;
 import metier.Adherent;
 
 /**
@@ -19,13 +19,6 @@ import metier.Adherent;
 @WebServlet("/AdherentController")
 public class AdherentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String ACTION_TYPE = "action";
-	private static final String LISTER_ADHERENT = "list";
-	private static final String AJOUTER_ADHERENT = "add";
-	private static final String INSERER_ADHERENT = "insert";
-	private static final String EDITER_ADHERENT = "edit";
-	private static final String ERROR_KEY = "messageErreur";
-	private static final String ERROR_PAGE = "/erreur.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -42,7 +35,7 @@ public class AdherentController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
+		requestTreatment(request, response);
 	}
 
 	/**
@@ -52,21 +45,21 @@ public class AdherentController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
+		requestTreatment(request, response);
 	}
 
-	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
+	protected void requestTreatment(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String actionName = request.getParameter(ACTION_TYPE);
-		String destinationPage = ERROR_PAGE;
+		String actionName = request.getParameter("action");
+		String destinationPage = "/views/General/error.jsp";
 		// execute l'action
-		if (LISTER_ADHERENT.equals(actionName)) {
+		if ("list".equals(actionName)) {
 			try {
+				
+				AdherentService adherentService = new AdherentService();
+				request.setAttribute("adherents", adherentService.findAll());
 
-				Service unService = new Service();
-				request.setAttribute("mesAdherents", unService.consulterListeAdherents());
-
-			} catch (MonException e) {
+			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -74,58 +67,92 @@ public class AdherentController extends HttpServlet {
 			destinationPage = "/views/Adherent/list.jsp";
 		}
 
-		else if (AJOUTER_ADHERENT.equals(actionName)) {
+		else if ("add".equals(actionName)) {
 
 			destinationPage = "/views/Adherent/add.jsp";
 		} 
 		
-		else if (INSERER_ADHERENT.equals(actionName)) {
+		else if ("insertOrUpdate".equals(actionName)) {
 			try {
-				Adherent unAdherent = new Adherent();
+				Adherent adherent = new Adherent();
 				String id = request.getParameter("id");
 				if(id!=null)
 				{
-					unAdherent.setIdAdherent(Integer.parseInt(id));
+					adherent.setId(Integer.parseInt(id));
 				}
-				unAdherent.setNomAdherent(request.getParameter("txtnom"));
-				unAdherent.setPrenomAdherent(request.getParameter("txtprenom"));
-				unAdherent.setVilleAdherent(request.getParameter("txtville"));
-				Service unService = new Service();
-				unService.insertAdherent(unAdherent);
+				adherent.setLastname(request.getParameter("lastname"));
+				adherent.setFirstname(request.getParameter("firstname"));
+				adherent.setCity(request.getParameter("city"));
+				AdherentService adherentService = new AdherentService();
+				adherentService.insertOrUpdate(adherent);
 
-			} catch (MonException e) {
+			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			destinationPage = "/views/index.jsp";
 		}
 		
-		else if (EDITER_ADHERENT.equals(actionName)) {
+		else if ("edit".equals(actionName)) {
 			try {
-				Service unService = new Service();
-				Adherent unAdherent = unService.consulterAdherent(Integer.parseInt(request.getParameter("id")));
-				if(unAdherent==null)
+				AdherentService adherentService = new AdherentService();
+				Adherent adherent = adherentService.findById(Integer.parseInt(request.getParameter("id")));
+				if(adherent==null)
 				{
-					throw new MonException("Cet adherent n'existe pas");
+					throw new MyException("Cet adherent n'existe pas");
 				}
-				request.setAttribute("id", unAdherent.getIdAdherent());
-				request.setAttribute("txtnom", unAdherent.getNomAdherent());
-				request.setAttribute("txtprenom", unAdherent.getPrenomAdherent());
-				request.setAttribute("txtville", unAdherent.getVilleAdherent());
+				request.setAttribute("adherent", adherent);
 
-			} catch (MonException e) {
+			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			destinationPage = "/views/Adherent/edit.jsp";
 		}
+		
+		else if ("deleteConfirmation".equals(actionName)) {
+			try {
+				AdherentService adherentService = new AdherentService();
+				Adherent adherent = adherentService.findById(Integer.parseInt(request.getParameter("id")));
+				if(adherent==null)
+				{
+					throw new MyException("Cet adherent n'existe pas");
+				}
+				request.setAttribute("adherent", adherent);
+
+			} catch (MyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			destinationPage = "/views/Adherent/delete.jsp";
+		}
+		
+		else if ("delete".equals(actionName)) {
+			try {
+				AdherentService adherentService = new AdherentService();
+				if(request.getParameter("id")==null)
+				{
+					throw new MyException("Cet adherent n'existe pas");
+				}
+				int adherentId = Integer.parseInt(request.getParameter("id"));
+			
+				adherentService.delete(adherentId);
+
+			} catch (MyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			destinationPage = "/views/index.jsp";
+		}
 
 		else {
-			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
-			request.setAttribute(ERROR_KEY, messageErreur);
+			String errorMessage = "[" + actionName + "] n'est pas une action valide.";
+			request.setAttribute("errorMessage", errorMessage);
 		}
-		// Redirection vers la page jsp appropriee
+		// Redirection to the appropriate jsp page
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
 		dispatcher.forward(request, response);
 

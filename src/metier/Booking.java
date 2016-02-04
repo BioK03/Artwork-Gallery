@@ -9,23 +9,23 @@ import java.util.Date;
  * The persistent class for the reservation database table.
  * 
  */
-public class Reservation implements Serializable {
+public class Booking implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Date date;
 	private Adherent adherent;
-	private Oeuvrevente oeuvrevente;
+	private SellOeuvre sellOeuvre;
 
-	public Reservation() {
+	public Booking() {
 	}
 
 
 
-	public Reservation(Date date, Adherent adherent, Oeuvrevente oeuvrevente) {
+	public Booking(Date date, Adherent adherent, SellOeuvre sellOeuvre) {
 		super();
 		this.date = date;
 		this.adherent = adherent;
-		this.oeuvrevente = oeuvrevente;
+		this.sellOeuvre = sellOeuvre;
 	}
 
 
@@ -46,12 +46,12 @@ public class Reservation implements Serializable {
 		this.adherent = adherent;
 	}
 
-	public Oeuvrevente getOeuvrevente() {
-		return this.oeuvrevente;
+	public SellOeuvre getSellOeuvre() {
+		return this.sellOeuvre;
 	}
 
-	public void setOeuvrevente(Oeuvrevente oeuvrevente) {
-		this.oeuvrevente = oeuvrevente;
+	public void setSellOeuvre(SellOeuvre sellOeuvre) {
+		this.sellOeuvre = sellOeuvre;
 	}
 
 }

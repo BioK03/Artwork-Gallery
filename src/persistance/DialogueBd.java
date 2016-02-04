@@ -19,7 +19,7 @@ public class DialogueBd {
 		super();
 	}
 
-	public void insertionBD(String mysql) throws MonException {
+	public void insertionBD(String mysql) throws MyException {
 		Connection cnx = null;
 		try {
 			cnx = Connexion.getInstance().getConnexion();
@@ -32,16 +32,16 @@ public class DialogueBd {
 		{
 			System.out.println("Erreur :" + e.getMessage());
 			System.out.println(mysql);
-			new MonException(e.getMessage());
+			new MyException(e.getMessage());
 		}
 
 		catch (Exception e) {
 			System.out.println(e.getMessage());
-			throw new MonException(e.getMessage());
+			throw new MyException(e.getMessage());
 		}
 	}
 
-	public static List<Object> lecture(String req) throws MonException {
+	public static List<Object> lecture(String req) throws MyException {
 		Connection cnx = null;
 		Statement stmt;
 		ResultSet rs;
@@ -74,10 +74,10 @@ public class DialogueBd {
 			return (mesRes);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			throw new MonException(e.getMessage());
+			throw new MyException(e.getMessage());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			throw new MonException(e.getMessage());
+			throw new MyException(e.getMessage());
 		} finally {
 			// S'il y a eu un problème, la connexion
 			// peut être encore ouverte, dans ce cas
@@ -91,7 +91,7 @@ public class DialogueBd {
 		}
 	}
 
-	public void execute(String mysql) throws MonException {
+	public void execute(String mysql) throws MyException {
 		Connection cnx = null;
 		try {
 			cnx = Connexion.getInstance().getConnexion();
@@ -101,10 +101,10 @@ public class DialogueBd {
 			// on ferme la connexion
 			cnx.close();
 		} catch (SQLException e) {
-			throw new MonException(e.getMessage());
+			throw new MyException(e.getMessage());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			throw new MonException(e.getMessage());
+			throw new MyException(e.getMessage());
 		}
 	}
 

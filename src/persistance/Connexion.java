@@ -4,7 +4,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import meserreurs.MonException;
+import meserreurs.MyException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -25,7 +25,7 @@ public class Connexion {
 	private Connexion() {
 	}
 
-	public Connection getConnexion() throws MonException {
+	public Connection getConnexion() throws MyException {
 		Connection conn = null;
 		try {
 			Context ctxt = new InitialContext();
@@ -36,9 +36,9 @@ public class Connexion {
 			conn = ds.getConnection();
 
 		} catch (SQLException e) {
-			throw new MonException(e.getMessage());
+			throw new MyException(e.getMessage());
 		} catch (Exception e) {
-			throw new MonException(e.getMessage());
+			throw new MyException(e.getMessage());
 		}
 		return conn;
 	}

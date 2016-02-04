@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import metier.*;
-import dao.Service;
+import dao.AdherentService;
 import meserreurs.*;
 
 /**
@@ -20,11 +20,6 @@ import meserreurs.*;
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String ACTION_TYPE = "action";
-	private static final String INDEX = "index";
-	private static final String CONTACT = "contact";
-	private static final String ERROR_KEY = "messageErreur";
-	private static final String ERROR_PAGE = "/erreur.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -56,23 +51,23 @@ public class Controller extends HttpServlet {
 
 	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String actionName = request.getParameter(ACTION_TYPE);
-		String destinationPage = ERROR_PAGE;
+		String actionName = request.getParameter("action");
+		String destinationPage = "/views/General/error.jsp";
 		
 		
-		if (INDEX.equals(actionName)) {
+		if ("index".equals(actionName)) {
 			destinationPage = "/views/index.jsp";
 		}
 		
-		if (CONTACT.equals(actionName)) {
+		if ("contact".equals(actionName)) {
 			destinationPage = "/views/General/contact.jsp";
 		}
 
 		else {
-			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
-			request.setAttribute(ERROR_KEY, messageErreur);
+			String errorMessage = "[" + actionName + "] n'est pas une action valide.";
+			request.setAttribute("messageError", errorMessage);
 		}
-		// Redirection vers la page jsp appropriee
+		// Redirection to the appropriate jsp page
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
 		dispatcher.forward(request, response);
 

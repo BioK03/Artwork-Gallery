@@ -8,24 +8,24 @@ import java.util.Date;
  * The persistent class for the pret database table.
  * 
  */
-public class Pret implements Serializable {
+public class Loan implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private Date date;
-	private int duree;
-	private Oeuvrepret oeuvrepret;
+	private int duration;
+	private LoanOeuvre loanOeuvre;
 	private Adherent adherent;
 
 	
-	public Pret( Date date, int duree, Oeuvrepret oeuvrepret, Adherent adherent) {
+	public Loan( Date date, int duree, LoanOeuvre oeuvrepret, Adherent adherent) {
 		super();
 		this.date = date;
-		this.duree = duree;
-		this.oeuvrepret = oeuvrepret;
+		this.duration = duration;
+		this.loanOeuvre = loanOeuvre;
 		this.adherent = adherent;
 	}
 
-	public Pret() {
+	public Loan() {
 	}
 
 
@@ -38,19 +38,19 @@ public class Pret implements Serializable {
 	}
 
 	public int getDuree() {
-		return this.duree;
+		return this.duration;
 	}
 
-	public void setDuree(int duree) {
-		this.duree = duree;
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 
-	public Oeuvrepret getOeuvrepret() {
-		return this.oeuvrepret;
+	public LoanOeuvre getLoanOeuvre() {
+		return this.loanOeuvre;
 	}
 
-	public void setOeuvrepret(Oeuvrepret oeuvrepret) {
-		this.oeuvrepret = oeuvrepret;
+	public void setLoanOeuvre(LoanOeuvre loanOeuvre) {
+		this.loanOeuvre = loanOeuvre;
 	}
 
 	public Adherent getAdherent() {

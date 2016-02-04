@@ -1,31 +1,30 @@
 package metier;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
 
 /**
- * The persistent class for the adherent database table.
+ * The persistent class for the proprietaire database table.
  * 
  */
 
-public class Adherent implements Serializable {
+public class Owner implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	private int id;
 	private String lastname;
-	private String firstname;
-	private String city;
-
-	
-	public Adherent(int id, String lastname, String firstname, String city) {
-		super();
-		this.setId(id);
-		this.setLastname(lastname);
-		this.setFirstname(firstname);
-		this.setCity(city);
+    private String firstname;
+    
+	public Owner() {
 	}
 
-	public Adherent() {
-		this.setId(0);
+	public Owner(int idProprietaire, String nomProprietaire, String prenomProprietaire) {
+		super();
+		this.setId(idProprietaire);
+		this.setLastname(nomProprietaire);
+		this.setFirstname(prenomProprietaire);
 	}
 
 	public int getId() {
@@ -50,14 +49,6 @@ public class Adherent implements Serializable {
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
 	}
 
 	
