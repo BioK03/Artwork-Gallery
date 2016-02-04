@@ -24,7 +24,7 @@
 					<th class="col-xs-5 DiBlock noPadding Tcenter">Propriétaire</th>
 					<th class="col-xs-2 DiBlock noPadding Tcenter"></th>
 				</tr>
-		
+
 				<c:forEach items="${oeuvres}" var="oeuvre">
 					<tr class="col-xs-12 noPadding">
 						<td class="col-xs-1 DiBlock noPadding">${oeuvre.id}</td>
