@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<jsp:include page="../Layout/head.jsp"></jsp:include>
+	<jsp:include page="../layout/head.jsp"></jsp:include>
 	<body>
 		<ul class="nav nav-tabs">
 		  <li role="presentation"><a href="#">Vente</a></li>
@@ -38,6 +38,6 @@
 				</c:forEach>
 			</table>
 		</div>
-		<jsp:include page="../Layout/footer.jsp"></jsp:include>
+		<jsp:include page="../layout/footer.jsp"></jsp:include>
 	</body>
 </html>
