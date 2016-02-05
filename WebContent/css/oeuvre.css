@@ -113,6 +113,14 @@ body, html {
 	font-size: 150%;
 }
 
+.flashbagerror {
+	color: #CC0000;
+}
+
+.flashbagsucess {
+	color: #00CC00;
+}
+
 /* DISPLAY ///////////////////////////*/
 .Dinline {
 	display: inline;

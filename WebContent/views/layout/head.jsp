@@ -27,6 +27,9 @@
       <ul class="nav navbar-nav">
         <li><a href="AdherentController?action=list">Adhérents</a></li>
         <li><a href="OeuvreController?action=list&etat=vente">Oeuvres</a></li>
+        <c:if test="${not empty flashbag && not empty flashbagType}">
+        	<li class="flashbag${flashbagType}">${flashbag}</li>
+        </c:if>
       </ul>
     </div>
   </div>
