@@ -1,1 +1,10 @@
 .classpath
+*.class
+.classpath
+build/classes/controle/Controller.class
+*.class
+build/classes/persistance/Connexion.class
+*.class
+*.class
+.classpath
+*.class

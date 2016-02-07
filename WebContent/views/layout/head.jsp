@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta http-equiv="refresh" content="0;URL=javascript:fermer();">
 	<title>Expo : Médiathèque De POLYTECH</title>
+	<link rel="stylesheet" href="lib/nprogress/nprogress.css"/>
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="lib/bootstrapdatepicker/css/bootstrap-datepicker.min.css"/>
@@ -26,9 +26,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="AdherentController?action=list">Adhérents</a></li>
-        <li><a href="OeuvreController?action=list&etat=vente">Oeuvres</a></li>
+        <li><a href="OeuvreController?action=listLoan">Oeuvres</a></li>
+        <li><a href="BookingController?action=add">Réserver !</a></li>
         <c:if test="${not empty flashbag && not empty flashbagType}">
-        	<li class="flashbag${flashbagType}">${flashbag}</li>
+        	<li class="flashbag flashbag${flashbagType}">${flashbag}</li>
         </c:if>
       </ul>
     </div>

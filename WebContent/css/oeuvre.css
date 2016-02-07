@@ -113,12 +113,24 @@ body, html {
 	font-size: 150%;
 }
 
+.flashbag {
+	border-left: 1px solid #932611;
+}
+
 .flashbagerror {
 	color: #CC0000;
 }
 
-.flashbagsucess {
+.flashbagsuccess {
 	color: #00CC00;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.uppercase {
+	text-transform: uppercase;
 }
 
 /* DISPLAY ///////////////////////////*/

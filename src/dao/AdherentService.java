@@ -15,15 +15,16 @@ public class AdherentService {
 		try {
 			if(adherent.getId()!=0)
 			{
-				mysql = "update adherent set (nom_adherent='"+ adherent.getLastname()+
+				mysql = "update adherent set nom_adherent='"+ adherent.getLastname()+
 											"',prenom_adherent='"+ adherent.getFirstname()+
-											"',ville_adherent='"+ adherent.getCity()+"')";
+											"',ville_adherent='"+ adherent.getCity()+
+											"' where id_adherent ="+adherent.getId();
 			}
 			else
 			{
 				mysql = "insert into adherent  (nom_adherent,prenom_adherent,ville_adherent)  " + "values ('"
 						+ adherent.getLastname();
-				mysql += "'" + ",'" + adherent.getFirstname() + "','" + adherent.getCity() + "')";
+				mysql += "','" + adherent.getFirstname() + "','" + adherent.getCity() + "')";
 			}
 
 			unDialogueBd.insertionBD(mysql);
@@ -40,9 +41,9 @@ public class AdherentService {
 		String mysql = "delete FROM adherent WHERE id_adherent="+adherentId;
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		unDialogueBd.execute(mysql);
-		
+		mysql = "delete FROM reservation WHERE id_adherent="+adherentId;
+		unDialogueBd.execute(mysql);		
 	}
-	
 
 	public Adherent findById(int id) throws MyException {
 		String mysql = "select * from adherent where id_adherent=" + id;
@@ -72,7 +73,7 @@ public class AdherentService {
 				adherent.setLastname(rs.get(index + 1).toString());
 				adherent.setFirstname(rs.get(index + 2).toString());
 				adherent.setCity(rs.get(index + 3).toString());
-				index = index + 4;
+				index += 4;
 				adherents.add(adherent);
 			}
 

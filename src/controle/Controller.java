@@ -36,7 +36,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
+		requestTraitment(request, response);
 	}
 
 	/**
@@ -46,10 +46,10 @@ public class Controller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
+		requestTraitment(request, response);
 	}
 
-	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
+	protected void requestTraitment(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String actionName = request.getParameter("action");
 		String destinationPage = "/views/General/error.jsp";
