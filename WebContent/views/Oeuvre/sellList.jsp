@@ -30,7 +30,12 @@
 		
 				<c:forEach items="${sellOeuvres}" var="oeuvre">
 					<tr class="col-xs-12 noPadding">
-						<td class="col-xs-1 DiBlock noPadding">${oeuvre.id}</td>
+						<td class="col-xs-1 DiBlock noPadding">
+							<a class="aStyle" href="OeuvreController?action=sellDetails&id=${oeuvre.id}">
+								<span class="glyphicon glyphicon-search"></span>
+							</a>
+							${oeuvre.id}
+						</td>
 						<td class="col-xs-3 DiBlock noPadding">${oeuvre.title}</td>
 						<td class="col-xs-2 DiBlock noPadding">${oeuvre.condition}</td>
 		                <td class="col-xs-2 DiBlock noPadding">${oeuvre.price} €</td>
