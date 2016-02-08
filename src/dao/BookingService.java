@@ -1,6 +1,9 @@
 package dao;
 
 import meserreurs.MyException;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import metier.*;
@@ -42,7 +45,7 @@ public class BookingService {
 	}
 
 	public List<Booking> findByOeuvre(int id) throws MyException {
-		String mysql = "select * from reservation where id_oeuvrevente=" + id;
+		String mysql = "select * FROM reservation WHERE id_oeuvrevente=" + id;
 		List<Booking> bookings = findBySQL(mysql);
 		if (bookings.isEmpty())
 			return null;
@@ -84,13 +87,19 @@ public class BookingService {
 				Booking booking = new Booking();
 				booking.setSellOeuvre(oeuvreService.findSellById(Integer.parseInt(rs.get(index + 0).toString())));
 				booking.setAdherent(adherentService.findById(Integer.parseInt(rs.get(index + 1).toString())));
-				booking.setDate(new Date(rs.get(index + 2).toString()));
-				index += 3;
+				System.out.println(rs.get(index + 2).toString());
+				DateFormat format = new SimpleDateFormat("yyyy-MM-DD", Locale.FRANCE);
+				Date date = format.parse(rs.get(index + 2).toString());
+				booking.setDate(date);
+				booking.setStatus(rs.get(index + 3).toString());
+				index += 4;
 				bookings.add(booking);
 			}
 
 			return bookings;
 		} catch (Exception exc) {
+
+			System.out.println(exc.getMessage());
 			throw new MyException(exc.getMessage(), "systeme");
 		}
 	}

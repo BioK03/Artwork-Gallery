@@ -15,6 +15,7 @@ public class Booking implements Serializable {
 	private Date date;
 	private Adherent adherent;
 	private SellOeuvre sellOeuvre;
+	private String status;
 
 	public Booking() {
 	}
@@ -52,6 +53,18 @@ public class Booking implements Serializable {
 
 	public void setSellOeuvre(SellOeuvre sellOeuvre) {
 		this.sellOeuvre = sellOeuvre;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

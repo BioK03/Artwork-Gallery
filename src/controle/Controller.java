@@ -62,6 +62,10 @@ public class Controller extends HttpServlet {
 		if ("contact".equals(actionName)) {
 			destinationPage = "/views/General/contact.jsp";
 		}
+		
+		if ("location".equals(actionName)) {
+			destinationPage = "/views/General/location.jsp";
+		}
 
 		else {
 			String errorMessage = "[" + actionName + "] n'est pas une action valide.";
