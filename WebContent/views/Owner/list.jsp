@@ -1,12 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+	<jsp:include page="../layout/head.jsp"></jsp:include>
+	<body>
+		<c:set var="menu" scope="session" value="owner"/>
+		<jsp:include page="../General/oeuvreMenu.jsp"></jsp:include>
+		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des propriétaires</h1>
+		<h1>
+			<a class="col-xs-1 aStyle Tcenter" href="OwnerController?action=add">
+				<span class="glyphicon glyphicon-plus"></span>
+			</a>
+		</h1>
+		<div class="pageinner">
+			<table class="tablePerso Tcenter">
+				<tr class="col-xs-12 noPadding">
+					<th class="col-xs-2 DiBlock noPadding Tcenter">Numero</th>
+					<th class="col-xs-8 DiBlock noPadding Tcenter">Nom</th>
+					<th class="col-xs-2 DiBlock noPadding Tcenter"></th>
+				</tr>
 
-</body>
+				<c:forEach items="${owners}" var="owner">
+					<tr class="col-xs-12 noPadding">
+						<td class="col-xs-2 DiBlock noPadding">${owner.id}</td>
+						<td class="col-xs-8 DiBlock noPadding">${owner.firstname} ${owner.lastname}</td>
+		                <td class="col-xs-2 DiBlock noPadding">
+		                	<a class="glyphicon glyphicon-edit col-xs-6 noPadding DiBlock aStyle" href="OwnerController?action=edit&id=${owner.id}"></a>
+		                	<a class="glyphicon glyphicon-remove col-xs-6 noPadding DiBlock aStyle" href="OwnerController?action=deleteConfirmation&id=${owner.id}"></a>
+		                </td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		
+		
+		<jsp:include page="../layout/footer.jsp"></jsp:include>
+	</body>
 </html>

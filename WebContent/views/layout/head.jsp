@@ -26,8 +26,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="AdherentController?action=list">Adhérents</a></li>
-        <li><a href="OeuvreController?action=listLoan">Oeuvres</a></li>
-        <li><a href="BookingController?action=add">Réserver !</a></li>
+        <li><a href="OeuvreController?action=listSell">Oeuvres</a></li>
+        <li><a href="BookingController?action=add&return=other">Réserver !</a></li>
         <c:if test="${not empty flashbag && not empty flashbagType}">
         	<li class="flashbag flashbag${flashbagType}">${flashbag}</li>
         </c:if>

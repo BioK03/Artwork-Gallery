@@ -23,7 +23,12 @@
 		
 				<c:forEach items="${adherents}" var="adherent">
 					<tr class="col-xs-12 noPadding">
-						<td class="col-xs-2 DiBlock noPadding">${adherent.id}</td>
+						<td class="col-xs-2 DiBlock noPadding">
+							<a class="aStyle" href="AdherentController?action=details&id=${adherent.id}">
+								<span class="glyphicon glyphicon-user"></span>
+							</a>
+							${adherent.id}
+						</td>
 						<td class="col-xs-3 DiBlock noPadding">${adherent.lastname}</td>
 						<td class="col-xs-3 DiBlock noPadding">${adherent.firstname}</td>
 		                <td class="col-xs-3 DiBlock noPadding">${adherent.city}</td>

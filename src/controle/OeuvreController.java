@@ -145,7 +145,9 @@ public class OeuvreController extends HttpServlet {
 				}
 				flashbagType="success";
 				
-				if(request.getParameter("type")=="loan")
+				//System.out.println(request.getParameter("type"));
+				
+				if(request.getParameter("type").equals("loan"))
 				{
 					loanOeuvre.setTitle(request.getParameter("title"));
 					loanOeuvre.setOwner(ownerService.findById(Integer.parseInt(request.getParameter("owner"))));
@@ -164,9 +166,10 @@ public class OeuvreController extends HttpServlet {
 				}
 				else
 				{
+					System.out.println(request.getParameter("price"));
 					sellOeuvre.setTitle(request.getParameter("title"));
 					sellOeuvre.setCondition(request.getParameter("condition"));
-					sellOeuvre.setPrice(Float.parseFloat(request.getParameter("price")));
+					sellOeuvre.setPrice(Float.parseFloat((String)request.getParameter("price")));
 					sellOeuvre.setOwner(ownerService.findById(Integer.parseInt(request.getParameter("owner"))));
 					oeuvreService.insertOrUpdate(sellOeuvre);
 					try {
@@ -199,7 +202,7 @@ public class OeuvreController extends HttpServlet {
 					LoanOeuvre loanOeuvre = oeuvreService.findLoanLById(Integer.parseInt(request.getParameter("id")));
 					if(loanOeuvre==null)
 					{
-						throw new MyException("Cette oeuvre n'existe pas");
+						throw new MyException("Cette oeuvre n'existe pass");
 					}
 					request.setAttribute("oeuvre", loanOeuvre);
 					request.setAttribute("type", "loan");

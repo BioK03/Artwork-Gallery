@@ -159,7 +159,10 @@ public class OwnerController extends HttpServlet {
 				request.setAttribute("owner", owner);
 				request.setAttribute("loanOeuvres", oeuvreService.findLoanByOwner(owner.getId()));
 				request.setAttribute("sellOeuvres", oeuvreService.findSellByOwner(owner.getId()));
-
+				/*for(int i=0; i<oeuvreService.findLoanByOwner(owner.getId()).size(); i++)
+				{
+					System.out.println(oeuvreService.findLoanByOwner(owner.getId()).get(i).getTitle());
+				}*/
 
 			} catch (MyException e) {
 				// TODO Auto-generated catch block

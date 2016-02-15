@@ -16,14 +16,14 @@ public class OeuvreService {
 			if(loanOeuvre.getId()!=0)
 			{
 				mysql = "update oeuvrepret set titre_oeuvrepret='"+ loanOeuvre.getTitle()+
-											"',id_propriétaire='"+ loanOeuvre.getOwner()+
+											"',id_proprietaire='"+ loanOeuvre.getOwner().getId()+
 											"' where id_oeuvrepret ="+loanOeuvre.getId();
 			}
 			else
 			{
-				mysql = "insert into oeuvrepret  (titre_oeuvrepret,id_propriétaire)  " + "values ('"
+				mysql = "insert into oeuvrepret  (titre_oeuvrepret,id_proprietaire)  " + "values ('"
 						+ loanOeuvre.getTitle();
-				mysql += "','" + loanOeuvre.getOwner() +"')";
+				mysql += "','" + loanOeuvre.getOwner().getId() +"')";
 			}
 
 			unDialogueBd.insertionBD(mysql);
@@ -40,16 +40,16 @@ public class OeuvreService {
 			if(sellOeuvre.getId()!=0)
 			{
 				mysql = "update oeuvrevente set titre_oeuvrevente='"+ sellOeuvre.getTitle()+
-											"',id_propriétaire='"+ sellOeuvre.getOwner()+
+											"',id_proprietaire='"+ sellOeuvre.getOwner().getId()+
 											"',etat_oeuvrevente='"+ sellOeuvre.getCondition()+
 											"',prix_oeuvrevente='"+ sellOeuvre.getPrice()+
 											"' where id_oeuvrevente ="+sellOeuvre.getId();
 			}
 			else
 			{
-				mysql = "insert into oeuvrevente  (titre_oeuvrevente,id_propriétaire,etat_oeuvrevente,prix_oeuvrevente)  " + "values ('"
+				mysql = "insert into oeuvrevente  (titre_oeuvrevente,id_proprietaire,etat_oeuvrevente,prix_oeuvrevente)  " + "values ('"
 						+ sellOeuvre.getTitle();
-				mysql += "','" + sellOeuvre.getOwner() +"','" + sellOeuvre.getCondition() +"','" + sellOeuvre.getPrice() +"')";
+				mysql += "','" + sellOeuvre.getOwner().getId() +"','" + sellOeuvre.getCondition() +"','" + sellOeuvre.getPrice() +"')";
 			}
 
 			unDialogueBd.insertionBD(mysql);

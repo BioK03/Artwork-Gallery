@@ -68,19 +68,37 @@ public class BookingController extends HttpServlet {
 		// execute l'action
 		if ("add".equals(actionName)) {
 			try {
-				if(request.getParameter("return")=="sellOeuvre")
+				if(request.getParameter("return").equals("selloeuvre"))
 				{
+					System.out.println("Oeuvre selected");
 					request.setAttribute("adherents", adherentService.findAll());
 					SellOeuvre sellOeuvre = oeuvreService.findSellById(Integer.parseInt(request.getParameter("id")));
-					request.setAttribute("oeuvre", sellOeuvre);
-				}
-				else
-				{
-					request.setAttribute("adherent", adherentService.findById(Integer.parseInt(request.getParameter("id"))));
+					request.setAttribute("selAdherent", null);
+					
+					request.setAttribute("selOeuvre", sellOeuvre);
 					List<SellOeuvre> sellOeuvres = oeuvreService.findAllSell();
 					request.setAttribute("oeuvres", sellOeuvres);
 				}
-				
+				else if(request.getParameter("return").equals("adherent"))
+				{
+					System.out.println("Adherent selected");
+					request.setAttribute("adherents", adherentService.findAll());
+					request.setAttribute("selAdherent", adherentService.findById(Integer.parseInt(request.getParameter("id"))));
+					
+					request.setAttribute("selOeuvre", null);
+					List<SellOeuvre> sellOeuvres = oeuvreService.findAllSell();
+					request.setAttribute("oeuvres", sellOeuvres);
+				}
+				else
+				{
+					System.out.println("No specified");
+					request.setAttribute("adherents", adherentService.findAll());
+					request.setAttribute("selAdherent", null);
+					
+					request.setAttribute("selOeuvre", null);
+					List<SellOeuvre> sellOeuvres = oeuvreService.findAllSell();
+					request.setAttribute("oeuvres", sellOeuvres);
+				}				
 			}
 			catch (MyException e) {
 				// TODO Auto-generated catch block
