@@ -87,7 +87,6 @@ public class BookingService {
 				Booking booking = new Booking();
 				booking.setSellOeuvre(oeuvreService.findSellById(Integer.parseInt(rs.get(index + 0).toString())));
 				booking.setAdherent(adherentService.findById(Integer.parseInt(rs.get(index + 1).toString())));
-				System.out.println(rs.get(index + 2).toString());
 				DateFormat format = new SimpleDateFormat("yyyy-MM-DD", Locale.FRANCE);
 				Date date = format.parse(rs.get(index + 2).toString());
 				booking.setDate(date);
@@ -98,8 +97,6 @@ public class BookingService {
 
 			return bookings;
 		} catch (Exception exc) {
-
-			System.out.println(exc.getMessage());
 			throw new MyException(exc.getMessage(), "systeme");
 		}
 	}
