@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <head>
@@ -25,11 +26,19 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="AdherentController?action=list">Adhérents</a></li>
-        <li><a href="OeuvreController?action=listSell">Oeuvres</a></li>
-        <li><a href="BookingController?action=add&return=other">Réserver !</a></li>
+        <li><a href="AdherentController?action=list"><span class="glyphicon glyphicon-user"></span> Adhérents</a></li>
+        <li><a href="OeuvreController?action=listSell"><span class="glyphicon glyphicon-book"></span> Oeuvres</a></li>
+        <li><a href="BookingController?action=add&returnPage=other"><i class="fa fa-bookmark"></i> Réserver !</a></li>
         <c:if test="${not empty flashbag && not empty flashbagType}">
-        	<li class="flashbag flashbag${flashbagType}">${flashbag}</li>
+        	<li class="flashbag flashbag${flashbagType}">
+        		<c:if test="${flashbagType == 'success'}">
+        			<span class="glyphicon glyphicon-ok"></span>
+        		</c:if>
+        		<c:if test="${flashbagType == 'error'}">
+        			<span class="glyphicon glyphicon-remove"></span>
+        		</c:if>
+        		${flashbag}
+        	</li>
         </c:if>
       </ul>
     </div>

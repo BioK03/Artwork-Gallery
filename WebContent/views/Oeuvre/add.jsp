@@ -20,7 +20,7 @@
 			    </span>
 			    <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 				    <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="title" 
-				    	value="" placeholder="Nom de l'oeuvre" id ="title" customplaceholder="0" autocomplete="off">
+				    	value="" placeholder="Nom de l'oeuvre" id ="title" customplaceholder="0" autocomplete="off" required>
 			    </span>
 			    <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 					<span class="customPlaceHolder">Propriétaire</span>

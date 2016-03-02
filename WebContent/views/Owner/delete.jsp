@@ -35,8 +35,8 @@
 					</ul><br/>
 				</c:if>
 			</div>
-			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter btn btn-expo" href="OwnerController?action=delete&id=${owner.id}">Confirmer la suppression</a>
-			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="OwnerController?action=list">Retour à la liste</a>
+			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter btn btn-expo" href="OwnerController?action=delete&id=${owner.id}"><span class="glyphicon glyphicon-ok"></span> Confirmer la suppression</a>
+			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="OwnerController?action=list"><span class="glyphicon glyphicon-remove"></span> Retour à la liste</a>
 		</DIV>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
 	</body>

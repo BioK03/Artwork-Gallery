@@ -6,38 +6,59 @@
 <html>
 	<jsp:include page="../layout/head.jsp"></jsp:include>
 	<body>
-		<h1 class="Tcenter josefin noPadding">Détails de ${oeuvre.title}</h1>
+		<h1 class="Tcenter josefin">
+			Détails de ${oeuvre.title}
+			<br/>
+			<a class="glyphicon glyphicon-edit noPadding DiBlock aStyle" href="OeuvreController?action=edit&id=${oeuvre.id}&type=sell"></a>
+            <a class="glyphicon glyphicon-remove col-xs-offset-1 noPadding DiBlock aStyle" href="OeuvreController?action=deleteConfirmation&id=${oeuvre.id}"></a>
+		</h1>
 		
 		<div class="pageinner">
 			<span class="col-xs-6">Numéro: ${oeuvre.id}</span>
 			<span class="col-xs-6">Etat: ${oeuvre.condition}</span>
 			<span class="col-xs-6">Prix: <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${oeuvre.price}"/> €</span>
 			<span class="col-xs-6">Propriétaire: ${oeuvre.owner.firstname} ${oeuvre.owner.lastname}</span>
-			<h4 class="Tcenter josefin col-xs-12">Réservations</h4>
-			<table class="col-xs-12 noPadding mTop2em">
-				<tbody class="col-xs-12 noPadding">
-					<tr class="col-xs-12 noPadding">
-						<th class="col-xs-5 noPadding Tcenter">Adhérent</th>
-						<th class="col-xs-3 noPadding Tcenter">Date</th>
-						<th class="col-xs-4 noPadding Tcenter">Statut</th>
-					</tr>
-					<c:forEach items="${bookings}" var="booking">
+			<c:if test="${not empty bookings}">
+				<h4 class="Tcenter josefin col-xs-12">Réservations</h4>
+				<table class="col-xs-12 noPadding mTop2em">
+					<tbody class="col-xs-12 noPadding">
 						<tr class="col-xs-12 noPadding">
-							<td class="col-xs-5 noPadding Tcenter">
-								<a class="aStyle" href="AdherentController?action=details&id=${booking.adherent.id}">
-									<span class="glyphicon glyphicon-user"></span>
-								</a>
-								${booking.adherent.firstname} ${booking.adherent.lastname} (${booking.adherent.id})
-							</td>
-							<td class="col-xs-3 noPadding Tcenter"><fmt:formatDate value="${booking.date}" pattern="dd/MM/yyyy" /></td>
-							<td class="col-xs-4 noPadding Tcenter">${booking.status}</td>
+							<th class="col-xs-4 noPadding Tcenter">Adhérent</th>
+							<th class="col-xs-2 noPadding Tcenter">Date</th>
+							<th class="col-xs-3 noPadding Tcenter">Statut</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<a class="aStyle col-xs-12 Tcenter" href="OeuvreController?action=listSell">Liste des oeuvres en vente</a>
-			<br/>
-			<a class="aStyle col-xs-12 Tcenter" href="BookingController?action=add&return=selloeuvre&id=${oeuvre.id}">Réservez cette oeuvre !</a>
+						<c:forEach items="${bookings}" var="booking">
+							<tr class="col-xs-12 noPadding">
+								<td class="col-xs-4 noPadding Tcenter">
+									<a class="aStyle" href="AdherentController?action=details&id=${booking.adherent.id}">
+										<span class="glyphicon glyphicon-user"></span>
+									</a>
+									${booking.adherent.firstname} ${booking.adherent.lastname} (${booking.adherent.id})
+								</td>
+								<td class="col-xs-2 noPadding Tcenter"><fmt:formatDate value="${booking.date}" pattern="dd/MM/yyyy" /></td>
+								<td class="col-xs-3 noPadding Tcenter">${booking.status}</td>
+								<td class="col-xs-3">
+									<a class="glyphicon glyphicon-edit col-xs-6 DiBlock aStyle" href="BookingController?action=edit&oeuvreId=${booking.sellOeuvre.id}&adherentId=${booking.adherent.id}"></a>
+	            					<a class="glyphicon glyphicon-remove col-xs-6 aStyle" href="BookingController?action=deleteConfirmation&oeuvreId=${booking.sellOeuvre.id}&adherentId=${booking.adherent.id}"></a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
+			<c:if test="${empty bookings}">
+				<h4>Pas encore de réservations</h4>
+			</c:if>
+			<h4>
+				<a class="aStyle col-xs-4 Tcenter mTop2em" href="OeuvreController?action=listSell">
+					<i class="fa fa-list"></i>
+					Liste des oeuvres en vente
+				</a>
+				<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter mTop2em" href="BookingController?action=add&returnPage=selloeuvre&id=${oeuvre.id}">
+					<i class="fa fa-bookmark"></i>
+					Réservez cette oeuvre !
+				</a>
+			</h4>
 		</div>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
 	</body>

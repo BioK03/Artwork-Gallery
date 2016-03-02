@@ -8,11 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import metier.*;
-import dao.AdherentService;
-import meserreurs.*;
 
 /**
  * Servlet implementation class Controller
@@ -53,6 +49,8 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		String actionName = request.getParameter("action");
 		String destinationPage = "/views/General/error.jsp";
+		String flashbag = "";
+		String flashbagType = "";
 		
 		
 		if ("index".equals(actionName)) {
@@ -60,6 +58,22 @@ public class Controller extends HttpServlet {
 		}
 		
 		if ("contact".equals(actionName)) {
+			destinationPage = "/views/General/contact.jsp";
+		}
+		
+		if("contactValidation".equals(actionName)) {
+			try {
+				SendEmail.sendMail("FROM" +request.getParameter("name")+" ( "+request.getParameter("mail")+" ) : "+request.getParameter("content"), "expo.polytech.lyon@gmail.com");
+				
+				SendEmail.sendMail("Votre message : \n\n "+request.getParameter("content")+"\n\n a été transféré avec succès, vous recevrez une réponse sous 48h.", request.getParameter("mail"));
+				
+				flashbag = "Le message a été envoyé.";
+				flashbagType = "success";
+			} catch (Exception e) {
+				flashbag=e.getMessage();
+				flashbagType="error";
+			}
+			
 			destinationPage = "/views/General/contact.jsp";
 		}
 		

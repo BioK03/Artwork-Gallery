@@ -19,17 +19,20 @@ public class BookingService {
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		try {
 			Booking booking2 = findByOeuvreAdherent(booking.getSellOeuvre().getId(), booking.getAdherent().getId());
+		    String bookingDate =  new SimpleDateFormat("y-MM-dd", Locale.FRANCE).format(booking.getDate());
+		    System.out.println("2 : "+bookingDate+", 3 :"+booking.getDate().toString());
 			if(booking2!=null)
 			{
-				mysql = "update reservation set id_adherent='"+ booking.getAdherent()+
-											"',id_oeuvrevente='"+ booking.getSellOeuvre()+
-											"',date_reservation='"+ booking.getDate();
+				mysql = "update reservation set id_adherent='"+ booking.getAdherent().getId()+
+											"',id_oeuvrevente='"+ booking.getSellOeuvre().getId()+
+											"',date_reservation='"+ bookingDate+
+											"',statut='"+ booking.getStatus()+"'";
 			}
 			else
 			{
-				mysql = "insert into reservation  (id_adherent,id_oeuvrevente,date_reservation)  " + "values ('"
-						+ booking.getAdherent();
-				mysql += "','" + booking.getSellOeuvre() + "','" + booking.getDate() + "')";
+				mysql = "insert into reservation  (id_adherent,id_oeuvrevente,date_reservation,statut)  " + "values ('"
+						+ booking.getAdherent().getId();
+				mysql += "','" + booking.getSellOeuvre().getId() + "','" + bookingDate + "','" + booking.getStatus() + "')";
 			}
 
 			unDialogueBd.insertionBD(mysql);
@@ -87,7 +90,7 @@ public class BookingService {
 				Booking booking = new Booking();
 				booking.setSellOeuvre(oeuvreService.findSellById(Integer.parseInt(rs.get(index + 0).toString())));
 				booking.setAdherent(adherentService.findById(Integer.parseInt(rs.get(index + 1).toString())));
-				DateFormat format = new SimpleDateFormat("yyyy-MM-DD", Locale.FRANCE);
+				DateFormat format = new SimpleDateFormat("y-MM-dd", Locale.FRANCE);
 				Date date = format.parse(rs.get(index + 2).toString());
 				booking.setDate(date);
 				booking.setStatus(rs.get(index + 3).toString());

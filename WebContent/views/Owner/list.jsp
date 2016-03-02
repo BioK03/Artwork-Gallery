@@ -11,7 +11,7 @@
 		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des propriétaires</h1>
 		<h1>
 			<a class="col-xs-1 aStyle Tcenter" href="OwnerController?action=add">
-				<span class="glyphicon glyphicon-plus"></span>
+				<i class="fa fa-user-plus"></i>
 			</a>
 		</h1>
 		<div class="pageinner">
@@ -24,11 +24,16 @@
 
 				<c:forEach items="${owners}" var="owner">
 					<tr class="col-xs-12 noPadding">
-						<td class="col-xs-2 DiBlock noPadding">${owner.id}</td>
+						<td class="col-xs-2 DiBlock noPadding">
+							<a class="aStyle" href="OwnerController?action=details&id=${owner.id}">
+								<i class="fa fa-user"></i>
+							</a>
+							${owner.id}
+						</td>
 						<td class="col-xs-8 DiBlock noPadding">${owner.firstname} ${owner.lastname}</td>
 		                <td class="col-xs-2 DiBlock noPadding">
 		                	<a class="glyphicon glyphicon-edit col-xs-6 noPadding DiBlock aStyle" href="OwnerController?action=edit&id=${owner.id}"></a>
-		                	<a class="glyphicon glyphicon-remove col-xs-6 noPadding DiBlock aStyle" href="OwnerController?action=deleteConfirmation&id=${owner.id}"></a>
+		                	<a class="fa fa-user-times col-xs-6 noPadding DiBlock aStyle" href="OwnerController?action=deleteConfirmation&id=${owner.id}"></a>
 		                </td>
 					</tr>
 				</c:forEach>

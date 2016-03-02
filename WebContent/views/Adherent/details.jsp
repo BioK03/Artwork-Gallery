@@ -8,35 +8,57 @@
 
 
 	<body>
-		<h1 class="Tcenter josefin"> Détails de ${adherent.firstname} ${adherent.lastname}</h1> 
+		<h1 class="Tcenter josefin">
+			Détails de ${adherent.firstname} ${adherent.lastname}
+			<br/>
+			<a class="glyphicon glyphicon-edit DiBlock aStyle" href="AdherentController?action=edit&id=${adherent.id}"></a>
+            <a class="fa fa-user-times col-xs-offset-1 aStyle" href="AdherentController?action=deleteConfirmation&id=${adherent.id}"></a>
+		</h1> 
 	
 		<div class="pageinner Tleft">
 			<p>Ville : ${adherent.city}</p><br/>
-			<p>Oeuvres réservées :</p><br/>
-			<table class="col-xs-12 noPadding">
-				<tbody class="col-xs-12 noPadding">
-					<tr class="col-xs-12 noPadding">
-						<th class="col-xs-5 Tcenter">Oeuvre</th>
-						<th class="col-xs-4 Tcenter">Date</th>
-						<th class="col-xs-3 Tcenter">Statut</th>
-					</tr>
-					<c:forEach items="${bookings}" var="booking">
+			<c:if test="${not empty bookings}">
+				<p>Oeuvres réservées :</p><br/>
+				<table class="col-xs-12 noPadding">
+					<tbody class="col-xs-12 noPadding">
 						<tr class="col-xs-12 noPadding">
-							<td class="col-xs-5 Tcenter">
-								<a class="aStyle" href="OeuvreController?action=sellDetails&id=${booking.sellOeuvre.id}">
-									<span class="glyphicon glyphicon-book"></span>
-								</a>
-								${booking.sellOeuvre.title}
-							</td>
-							<td class="col-xs-4 Tcenter"><fmt:formatDate value="${booking.date}" pattern="dd/MM/yyyy" /></td>
-							<td class="col-xs-3 Tcenter">${booking.status}</td>
+							<th class="col-xs-4 Tcenter">Oeuvre</th>
+							<th class="col-xs-2 Tcenter">Date</th>
+							<th class="col-xs-3 Tcenter">Statut</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="AdherentController?action=list">Liste des adéhrents</a>
+						<c:forEach items="${bookings}" var="booking">
+							<tr class="col-xs-12 noPadding">
+								<td class="col-xs-4 Tcenter">
+									<a class="aStyle" href="OeuvreController?action=sellDetails&id=${booking.sellOeuvre.id}">
+										<span class="glyphicon glyphicon-book"></span>
+									</a>
+									${booking.sellOeuvre.title} (${booking.sellOeuvre.id})
+								</td>
+								<td class="col-xs-2 Tcenter"><fmt:formatDate value="${booking.date}" pattern="dd/MM/yyyy" /></td>
+								<td class="col-xs-3 Tcenter">${booking.status}</td>
+								<td class="col-xs-3">
+									<a class="glyphicon glyphicon-edit col-xs-6 DiBlock aStyle" href="BookingController?action=edit&oeuvreId=${booking.sellOeuvre.id}&adherentId=${booking.adherent.id}"></a>
+	            					<a class="glyphicon glyphicon-remove col-xs-6 aStyle" href="BookingController?action=deleteConfirmation&oeuvreId=${booking.sellOeuvre.id}&adherentId=${booking.adherent.id}"></a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
+			<c:if test="${empty bookings}">
+				<h4>Pas encore de réservations</h4>
+			</c:if>
 			<br/>
-			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="BookingController?action=add&return=adherent&id=${adherent.id}">Réservez avec cet adhérent !</a>
+			<h4>
+				<a class="aStyle col-xs-4 Tcenter mTop2em" href="AdherentController?action=list">
+					<i class="fa fa-list"></i>
+					Liste des adéhrents
+				</a>
+				<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter mTop2em" href="BookingController?action=add&returnPage=adherent&id=${adherent.id}">
+					<i class="fa fa-bookmark"></i>
+					Réservez avec cet adhérent !
+				</a>
+			</h4>
 		</div>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
 	</body>

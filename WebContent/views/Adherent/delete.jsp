@@ -15,8 +15,8 @@
 				<p class="capitalize Dinline">${adherent.firstname}</p>
 				<p class="Dinline">?</p>
 			</div>
-			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter btn btn-expo" href="AdherentController?action=delete&id=${adherent.id}">Confirmer la suppression</a>
-			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="AdherentController?action=list">Retour à la liste</a>
+			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter btn btn-expo" href="AdherentController?action=delete&id=${adherent.id}"><span class="glyphicon glyphicon-ok"></span> Confirmer la suppression</a>
+			<a class="aStyle col-xs-4 col-xs-offset-4 Tcenter" href="AdherentController?action=list"><span class="glyphicon glyphicon-remove"></span> Retour à la liste</a>
 		</DIV>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
 	</body>

@@ -1,8 +1,12 @@
 package controle;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,7 +72,7 @@ public class BookingController extends HttpServlet {
 		// execute l'action
 		if ("add".equals(actionName)) {
 			try {
-				if(request.getParameter("return").equals("selloeuvre"))
+				if(request.getParameter("returnPage").equals("selloeuvre"))
 				{
 					System.out.println("Oeuvre selected");
 					request.setAttribute("adherents", adherentService.findAll());
@@ -78,8 +82,10 @@ public class BookingController extends HttpServlet {
 					request.setAttribute("selOeuvre", sellOeuvre);
 					List<SellOeuvre> sellOeuvres = oeuvreService.findAllSell();
 					request.setAttribute("oeuvres", sellOeuvres);
+					
+					request.setAttribute("returnPage",  "selloeuvre");
 				}
-				else if(request.getParameter("return").equals("adherent"))
+				else if(request.getParameter("returnPage").equals("adherent"))
 				{
 					System.out.println("Adherent selected");
 					request.setAttribute("adherents", adherentService.findAll());
@@ -88,6 +94,8 @@ public class BookingController extends HttpServlet {
 					request.setAttribute("selOeuvre", null);
 					List<SellOeuvre> sellOeuvres = oeuvreService.findAllSell();
 					request.setAttribute("oeuvres", sellOeuvres);
+					
+					request.setAttribute("returnPage",  "adherent");
 				}
 				else
 				{
@@ -98,6 +106,8 @@ public class BookingController extends HttpServlet {
 					request.setAttribute("selOeuvre", null);
 					List<SellOeuvre> sellOeuvres = oeuvreService.findAllSell();
 					request.setAttribute("oeuvres", sellOeuvres);
+					
+					request.setAttribute("returnPage",  "other");
 				}				
 			}
 			catch (MyException e) {
@@ -114,22 +124,27 @@ public class BookingController extends HttpServlet {
 				Booking booking = new Booking();
 				booking.setAdherent(adherentService.findById(Integer.parseInt(request.getParameter("adherentId"))));
 				booking.setSellOeuvre(oeuvreService.findSellById(Integer.parseInt(request.getParameter("oeuvreId"))));
-				booking.setDate(new Date(request.getParameter("date")));
+				DateFormat df = new SimpleDateFormat("d/M/y", Locale.FRENCH);
+			    Date result =  df.parse(request.getParameter("date"));
+			    System.out.println(result.toString());
+				booking.setDate(result);
+				booking.setStatus("");
 				bookingService.insertOrUpdate(booking);
-				flashbag = "L'oeuvre a été réservé correctement.";
+				flashbag = "L'oeuvre a été réservée correctement.";
 				flashbagType = "success";
 			}
-			catch (MyException e) {
+			catch (MyException | ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				flashbag=e.getMessage();
 				flashbagType="error";
 			}
-			if(request.getParameter("return")=="sellOeuvre")
+			if(request.getParameter("returnPage").equals("selloeuvre"))
 			{
 				try {
-					request.setAttribute("oeuvre", oeuvreService.findSellById(Integer.parseInt(request.getParameter("id"))));
-					request.setAttribute("bookings", bookingService.findByOeuvre(Integer.parseInt(request.getParameter("id"))));
+					System.out.println(request.getParameter("oeuvreId"));
+					request.setAttribute("oeuvre", oeuvreService.findSellById(Integer.parseInt(request.getParameter("oeuvreId"))));
+					request.setAttribute("bookings", bookingService.findByOeuvre(Integer.parseInt(request.getParameter("oeuvreId"))));
 
 				} catch (MyException e) {
 					// TODO Auto-generated catch block
@@ -142,23 +157,48 @@ public class BookingController extends HttpServlet {
 			}
 			else
 			{
-				try {
-					request.setAttribute("adherent", adherentService.findById(Integer.parseInt(request.getParameter("id"))));
-					request.setAttribute("bookings", bookingService.findByAdherent(Integer.parseInt(request.getParameter("id"))));
+				if(request.getParameter("returnPage").equals("adherent"))
+				{
+					try {
+						System.out.println(request.getParameter("adherentId"));
+						request.setAttribute("adherent", adherentService.findById(Integer.parseInt(request.getParameter("adherentId"))));
+						request.setAttribute("bookings", bookingService.findByAdherent(Integer.parseInt(request.getParameter("adherentId"))));
 
-				} catch (MyException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					flashbag=e.getMessage();
-					flashbagType="error";
+					} catch (MyException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						flashbag=e.getMessage();
+						flashbagType="error";
+					}
+
+					destinationPage = "/views/Adherent/details.jsp";
 				}
-
-				destinationPage = "/views/Adherent/details.jsp";
+				else
+				{
+					try {
+						request.setAttribute("adherents", adherentService.findAll());
+						request.setAttribute("selAdherent", null);
+						
+						request.setAttribute("selOeuvre", null);
+						List<SellOeuvre> sellOeuvres = oeuvreService.findAllSell();
+						request.setAttribute("oeuvres", sellOeuvres);			
+					}
+					catch (MyException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						flashbag=e.getMessage();
+						flashbagType="error";
+					}
+					destinationPage = "/views/Booking/add.jsp";
+				}
 			}			
 		} 
 		
 		else if ("edit".equals(actionName)) {
 			try {
+				request.setAttribute("adherents", adherentService.findAll());
+				List<SellOeuvre> sellOeuvres = oeuvreService.findAllSell();
+				request.setAttribute("oeuvres", sellOeuvres);
 				request.setAttribute("booking", bookingService.findByOeuvreAdherent(Integer.parseInt(request.getParameter("oeuvreId")), Integer.parseInt(request.getParameter("adherentId"))));
 			}
 			catch (MyException e) {
@@ -196,7 +236,7 @@ public class BookingController extends HttpServlet {
 				flashbag=e.getMessage();
 				flashbagType="error";
 			}
-			if(request.getParameter("return")=="sellOeuvre")
+			if(request.getParameter("returnPage").equals("sellOeuvre"))
 			{
 				try {
 					request.setAttribute("oeuvre", oeuvreService.findSellById(Integer.parseInt(request.getParameter("id"))));

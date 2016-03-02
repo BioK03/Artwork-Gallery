@@ -8,7 +8,7 @@
 		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des Adhérents</h1>
 		<h1>
 			<a class="col-xs-1 aStyle Tcenter" href="AdherentController?action=add">
-				<span class="glyphicon glyphicon-plus"></span>
+				<i class="fa fa-user-plus"></i>
 			</a>
 		</h1>
 		<div class="pageinner">
@@ -25,7 +25,7 @@
 					<tr class="col-xs-12 noPadding">
 						<td class="col-xs-2 DiBlock noPadding">
 							<a class="aStyle" href="AdherentController?action=details&id=${adherent.id}">
-								<span class="glyphicon glyphicon-user"></span>
+								<i class="fa fa-user"></i>
 							</a>
 							${adherent.id}
 						</td>
@@ -34,7 +34,7 @@
 		                <td class="col-xs-3 DiBlock noPadding">${adherent.city}</td>
 		                <td class="col-xs-1 DiBlock noPadding">
 		                	<a class="glyphicon glyphicon-edit col-xs-6 noPadding DiBlock aStyle" href="AdherentController?action=edit&id=${adherent.id}"></a>
-		                	<a class="glyphicon glyphicon-remove col-xs-6 noPadding DiBlock aStyle" href="AdherentController?action=deleteConfirmation&id=${adherent.id}"></a>
+		                	<a class="fa fa-user-times col-xs-6 noPadding DiBlock aStyle" href="AdherentController?action=deleteConfirmation&id=${adherent.id}"></a>
 		                </td>
 					</tr>
 				</c:forEach>

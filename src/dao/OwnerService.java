@@ -33,11 +33,11 @@ public class OwnerService {
 	}
 	
 	public void delete(int ownerId) throws MyException {
-		String mysql = "delete FROM proprietaire WHERE id_proprietaire="+ownerId;
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
+		String mysql = "delete FROM oeuvrevente WHERE id_proprietaire="+ownerId;
 		unDialogueBd.execute(mysql);
-		mysql = "delete FROM oeuvrevente WHERE id_proprietaire="+ownerId;
-		unDialogueBd.execute(mysql);		
+		mysql = "delete FROM proprietaire WHERE id_proprietaire="+ownerId;
+		unDialogueBd.execute(mysql);
 	}
 	
 

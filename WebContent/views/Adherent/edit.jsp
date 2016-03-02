@@ -14,15 +14,15 @@
 				<input type="hidden" id="id" name="id" value="${adherent.id}"/>
 				<span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 				    <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="lastname" 
-				    	value="${adherent.lastname}" placeholder="Nom" id ="nom" customplaceholder="0" autocomplete="off">
+				    	value="${adherent.lastname}" placeholder="Nom" id ="nom" customplaceholder="0" autocomplete="off" required>
 			    </span>
 			    <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 			        <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="firstname"
-			        	value="${adherent.firstname}" placeholder="Prénom" id ="prenom" customplaceholder="0" autocomplete="off">
+			        	value="${adherent.firstname}" placeholder="Prénom" id ="prenom" customplaceholder="0" autocomplete="off" required>
 		        </span>
 		        <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 				  <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="city"
-					value="${adherent.city}" placeholder="Ville" id ="ville" customplaceholder="0" autocomplete="off">	 
+					value="${adherent.city}" placeholder="Ville" id ="ville" customplaceholder="0" autocomplete="off" required>	 
 			    </span>   
 		        <input type="submit" name="bt" value="Valider" class="btn btn-expo col-xs-6 col-xs-offset-3 mTop2em" > 
 			</form>

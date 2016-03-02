@@ -197,7 +197,7 @@ public class OeuvreController extends HttpServlet {
 			try {
 				request.setAttribute("owners", ownerService.findAll());
 				
-				if(request.getParameter("type")=="loan")
+				if(request.getParameter("type").equals("loan"))
 				{
 					LoanOeuvre loanOeuvre = oeuvreService.findLoanLById(Integer.parseInt(request.getParameter("id")));
 					if(loanOeuvre==null)
@@ -206,7 +206,6 @@ public class OeuvreController extends HttpServlet {
 					}
 					request.setAttribute("oeuvre", loanOeuvre);
 					request.setAttribute("type", "loan");
-					
 				}
 				else
 				{

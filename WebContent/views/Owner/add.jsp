@@ -13,11 +13,11 @@
 			<form  name='owner' method="post" action="OwnerController?action=insertOrUpdate" onsubmit="return teste()">
 			    <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 				    <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="firstname" 
-				    	value="" placeholder="Prénom" id ="firstname" customplaceholder="0" autocomplete="off">
+				    	value="" placeholder="Prénom" id ="firstname" customplaceholder="0" autocomplete="off" required>
 			    </span>
 			    <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 				    <input class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="lastname" 
-				    	value="" placeholder="Nom" id ="lastname" customplaceholder="0" autocomplete="off">
+				    	value="" placeholder="Nom" id ="lastname" customplaceholder="0" autocomplete="off" required>
 			    </span>
 		        <input type="submit" name="bt"  value="Ajouter" class="btn btn-expo col-xs-6 col-xs-offset-3 mTop2em" > 
 			</form>

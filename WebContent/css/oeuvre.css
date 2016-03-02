@@ -7,6 +7,12 @@ body, html {
     background-size: 100% 100%;
 }
 
+/* TOOLTIP //////////////////////////////*/
+.tooltip-inner {
+	white-space: nowrap;
+  	max-width: 100%;
+}
+
 /* SCROLLBAR ////////////////////////////*/
 ::-webkit-scrollbar {
     width: 12px;
@@ -142,8 +148,10 @@ body, html {
 	font-size: 150%;
 }
 
-.flashbag {
-	border-left: 1px solid #932611;
+.navbar-nav li {
+	display: inline-block;
+	height: 100%;
+	float: none;
 }
 
 .flashbagerror {
@@ -203,7 +211,7 @@ body, html {
 	color: #932611;
 	border-top: 1px solid #FFFFFF;
 	border-bottom: 1px solid #FFFFFF;
-	font-size: 120%;
+
 }
 
 /* INPUT ///////////////////////////*/
@@ -234,6 +242,87 @@ input[type="text"] {
 }
 
 /* OTHER ///////////////////////////*/
+#scene {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 3;
+}
+
+#scene ul li img {
+	width: 100%;
+	display: block;
+}
+
+.containerHome {
+	height: 100%;
+	width: 100%;
+	display: block;
+	margin-top: 0;
+	/*background: url('../img/fullGalerie.jpg');
+	background-size: 100% 100%;*/
+	color: #FFFFFF;
+	white-space : nowrap;
+	text-shadow: #932611 5px 5px, #000000 -5px 5px, #932611 -5px -5px, #000000 5px -5px;
+}
+
+.imgHome {
+	width: 100%;
+	min-height: 100%;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.containerHomeTop {
+	position: absolute;
+	top: 0em;
+	height: 100%;
+	z-index: 2;
+	width: 0%;
+	display: block;
+	margin-top: 0;
+	background-color: #FFFFFF;
+	color: #932611;
+	overflow-x: hidden;
+	white-space : nowrap;
+}
+
+.containerHomeSuperTop {
+	position: absolute;
+	top: 0em;
+	height: 100%;
+	z-index: 3;
+	width: 0%;
+	display: block;
+	margin-top: 0;
+	background: url('../img/fullGalerie.jpg');
+	background-size: 100% 100%;
+	color: #000000;
+	overflow-x: hidden;
+	white-space : nowrap;
+}
+
+.subContainerHomeExpo {
+	width: 100%;
+	font-size: 10em;
+	position: absolute;
+	top: 15%;
+	left: 0;
+}
+
+.subContainerHomePoly {
+	width: 100%;
+	font-size: 10em;
+	position: absolute;
+	top: calc(15% + 1em);
+	left: calc(0% + 4em);
+}
+
 .tablePerso, .tablePerso tbody {
 	width: 100%;
 	display: inline-block;
@@ -277,11 +366,13 @@ table td[class*=col-], table th[class*=col-] {
 	width: 100%;
 	bottom: 0;
 	height: 10%;
+	z-index: 4;
 	background-color: #000000;
 }
 
 .navbar {
 	margin-bottom: 0;
+	z-index: 4;
 }
 
 .imgFooter {

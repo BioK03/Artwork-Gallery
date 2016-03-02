@@ -10,7 +10,7 @@
 		<h1 class="Tcenter josefin"> Réservation d'une oeuvre </h1> 
 	
 		<div class="pageinner Tleft">
-			<form  name='identification' method="post" action="BookingController?insertOrUpdate" onsubmit="return teste()">
+			<form  name='identification' method="post" action="BookingController?action=insertOrUpdate&returnPage=${returnPage}" onsubmit="return teste()">
 				<span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 				    <select class="col-xs-12 inputStyle noOutline input-customPlaceholder" type="text" name="adherentId" 
 				    	placeholder="adherent" id ="adherent" customplaceholder="0" autocomplete="off">
@@ -29,14 +29,16 @@
 		        </span>
 		        <span class="col-xs-6 col-xs-offset-3 noPadding mTop2em">
 				  <input class="col-xs-12 inputStyle noOutline input-customPlaceholder datepicker" type="text" name="date"
-					placeholder="Date" id ="date" customplaceholder="0" autocomplete="off">	 
+					placeholder="Date" id ="date" customplaceholder="0" autocomplete="off" required>	 
 			    </span>         
 		        <input type="submit" name="bt"  value="Réserver" class="btn btn-expo col-xs-6 col-xs-offset-3 mTop2em" > 
 			</form>
 		</div>
 		<jsp:include page="../layout/footer.jsp"></jsp:include>
 		<script type="text/javascript">
-			$('.datepicker').datepicker();
+			$('.datepicker').datepicker({
+				format: 'dd/mm/yyyy'	
+			});
 		</script>
 	</body>
 </html>
