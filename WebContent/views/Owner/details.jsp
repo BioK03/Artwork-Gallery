@@ -8,6 +8,7 @@
 
 
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<h1 class="Tcenter josefin">
 			Détails de ${owner.firstname} ${owner.lastname}
 			<br/>
@@ -15,7 +16,7 @@
             <a class="fa fa-user-times col-xs-offset-1 aStyle" href="OwnerController?action=deleteConfirmation&id=${owner.id}"></a>
 		</h1> 
 	
-		<div class="pageinner Tleft">
+		<div class="pageinner Tleft jumbotron">
 			<c:if test="${not empty loanOeuvres}">
 				<p>Oeuvres en prêt possédées :</p><br/>
 				<table class="col-xs-12 noPadding">

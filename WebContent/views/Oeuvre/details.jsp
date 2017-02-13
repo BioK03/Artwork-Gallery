@@ -6,6 +6,7 @@
 <html>
 	<jsp:include page="../layout/head.jsp"></jsp:include>
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<h1 class="Tcenter josefin">
 			Détails de ${oeuvre.title}
 			<br/>
@@ -13,19 +14,19 @@
             <a class="glyphicon glyphicon-remove col-xs-offset-1 noPadding DiBlock aStyle" href="OeuvreController?action=deleteConfirmation&id=${oeuvre.id}"></a>
 		</h1>
 		
-		<div class="pageinner">
+		<div class="pageinner jumbotron">
 			<span class="col-xs-6">Numéro: ${oeuvre.id}</span>
 			<span class="col-xs-6">Etat: ${oeuvre.condition}</span>
 			<span class="col-xs-6">Prix: <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${oeuvre.price}"/> €</span>
 			<span class="col-xs-6">Propriétaire: ${oeuvre.owner.firstname} ${oeuvre.owner.lastname}</span>
 			<c:if test="${not empty bookings}">
 				<h4 class="Tcenter josefin col-xs-12">Réservations</h4>
-				<table class="col-xs-12 noPadding mTop2em">
+				<table class="col-xs-12 noPadding mTop2em tableExpo">
 					<tbody class="col-xs-12 noPadding">
-						<tr class="col-xs-12 noPadding">
-							<th class="col-xs-4 noPadding Tcenter">Adhérent</th>
-							<th class="col-xs-2 noPadding Tcenter">Date</th>
-							<th class="col-xs-3 noPadding Tcenter">Statut</th>
+						<tr class="col-xs-12 noPadding josefin">
+							<th class="col-xs-4 noPadding Tcenter">ADHERENT</th>
+							<th class="col-xs-2 noPadding Tcenter">DATE</th>
+							<th class="col-xs-3 noPadding Tcenter">STATUT</th>
 						</tr>
 						<c:forEach items="${bookings}" var="booking">
 							<tr class="col-xs-12 noPadding">

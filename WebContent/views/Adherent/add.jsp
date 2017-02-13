@@ -3,9 +3,8 @@
 <!DOCTYPE html>
 <html>
 	<jsp:include page="../layout/head.jsp"></jsp:include>
-
-
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<h1 class="Tcenter josefin"> Ajout d'un adhérent </h1> 
 	
 		<div class="pageinner Tleft">

@@ -5,19 +5,20 @@
 <html>
 	<jsp:include page="../layout/head.jsp"></jsp:include>
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des Adhérents</h1>
 		<h1>
 			<a class="col-xs-1 aStyle Tcenter" href="AdherentController?action=add">
 				<i class="fa fa-user-plus"></i>
 			</a>
 		</h1>
-		<div class="pageinner">
-			<table class="tablePerso Tcenter">
-				<tr class="col-xs-12 noPadding">
-					<th class="col-xs-2 DiBlock noPadding Tcenter">Numero</th>
-					<th class="col-xs-3 DiBlock noPadding Tcenter">Nom</th>
-					<th class="col-xs-3 DiBlock noPadding Tcenter">Prénom</th>
-					<th class="col-xs-3 DiBlock noPadding Tcenter">Ville</th>
+		<div class="pageinner jumbotron">
+			<table class="tablePerso Tcenter tableList">
+				<tr class="col-xs-12 noPadding josefin">
+					<th class="col-xs-2 DiBlock noPadding Tcenter">NUMERO</th>
+					<th class="col-xs-3 DiBlock noPadding Tcenter">NOM</th>
+					<th class="col-xs-3 DiBlock noPadding Tcenter">PRENOM</th>
+					<th class="col-xs-3 DiBlock noPadding Tcenter">VILLE</th>
 					<th class="col-xs-1 DiBlock noPadding Tcenter"></th>
 				</tr>
 		

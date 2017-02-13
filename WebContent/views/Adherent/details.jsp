@@ -8,6 +8,7 @@
 
 
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<h1 class="Tcenter josefin">
 			Détails de ${adherent.firstname} ${adherent.lastname}
 			<br/>
@@ -15,16 +16,16 @@
             <a class="fa fa-user-times col-xs-offset-1 aStyle" href="AdherentController?action=deleteConfirmation&id=${adherent.id}"></a>
 		</h1> 
 	
-		<div class="pageinner Tleft">
-			<p>Ville : ${adherent.city}</p><br/>
+		<div class="pageinner Tleft jumbotron">
+			<p class="Tcenter">Ville : ${adherent.city}</p><br/>
 			<c:if test="${not empty bookings}">
-				<p>Oeuvres réservées :</p><br/>
-				<table class="col-xs-12 noPadding">
+				<p class="Tcenter">Oeuvres réservées :</p><br/>
+				<table class="col-xs-12 noPadding tableExpo">
 					<tbody class="col-xs-12 noPadding">
-						<tr class="col-xs-12 noPadding">
-							<th class="col-xs-4 Tcenter">Oeuvre</th>
-							<th class="col-xs-2 Tcenter">Date</th>
-							<th class="col-xs-3 Tcenter">Statut</th>
+						<tr class="col-xs-12 noPadding josefin">
+							<th class="col-xs-4 Tcenter">OEUVRE</th>
+							<th class="col-xs-2 Tcenter">DATE</th>
+							<th class="col-xs-3 Tcenter">STATUT</th>
 						</tr>
 						<c:forEach items="${bookings}" var="booking">
 							<tr class="col-xs-12 noPadding">
@@ -46,7 +47,7 @@
 				</table>
 			</c:if>
 			<c:if test="${empty bookings}">
-				<h4>Pas encore de réservations</h4>
+				<h4 class="Tcenter">Pas encore de réservations</h4>
 			</c:if>
 			<br/>
 			<h4>

@@ -6,6 +6,7 @@
 	<jsp:include page="../layout/head.jsp"></jsp:include>
 
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<div class="pageinner">
 			<h1 class="Tcenter josefin"> CONTACT </h1> 
 			<form  name='contact' method="post" action="Controller?action=contactValidation">

@@ -6,6 +6,7 @@
 <html>
 	<jsp:include page="../layout/head.jsp"></jsp:include>
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<c:set var="menu" scope="session" value="sell"/>
 		<jsp:include page="../General/oeuvreMenu.jsp"></jsp:include>
 		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des oeuvres en vente</h1>
@@ -14,14 +15,14 @@
 				<span class="glyphicon glyphicon-plus"></span>
 			</a>
 		</h1>
-		<div class="pageinner">
-			<table class="tablePerso Tcenter">
-				<tr class="col-xs-12 noPadding">
-					<th class="col-xs-1 DiBlock noPadding Tcenter">Numero</th>
-					<th class="col-xs-3 DiBlock noPadding Tcenter">Titre</th>
-					<th class="col-xs-2 DiBlock noPadding Tcenter">Etat</th>
-					<th class="col-xs-2 DiBlock noPadding Tcenter">Prix</th>
-					<th class="col-xs-3 DiBlock noPadding Tcenter">Propriétaire</th>
+		<div class="pageinner jumbotron">
+			<table class="tablePerso Tcenter tableList">
+				<tr class="col-xs-12 noPadding josefin">
+					<th class="col-xs-1 DiBlock noPadding Tcenter">NUMERO</th>
+					<th class="col-xs-3 DiBlock noPadding Tcenter">TITRE</th>
+					<th class="col-xs-2 DiBlock noPadding Tcenter">ETAT</th>
+					<th class="col-xs-2 DiBlock noPadding Tcenter">PRIX</th>
+					<th class="col-xs-3 DiBlock noPadding Tcenter">PROPRIETAIRE</th>
 					<th class="col-xs-1 DiBlock noPadding Tcenter"></th>
 				</tr>
 		

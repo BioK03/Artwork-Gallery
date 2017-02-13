@@ -6,6 +6,7 @@
 <html>
 	<jsp:include page="../layout/head.jsp"></jsp:include>
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<c:set var="menu" scope="session" value="owner"/>
 		<jsp:include page="../General/oeuvreMenu.jsp"></jsp:include>
 		<h1 class="Tcenter josefin col-xs-4 col-xs-offset-4 noPadding">Listing des propriétaires</h1>
@@ -14,11 +15,11 @@
 				<i class="fa fa-user-plus"></i>
 			</a>
 		</h1>
-		<div class="pageinner">
-			<table class="tablePerso Tcenter">
-				<tr class="col-xs-12 noPadding">
-					<th class="col-xs-2 DiBlock noPadding Tcenter">Numero</th>
-					<th class="col-xs-8 DiBlock noPadding Tcenter">Nom</th>
+		<div class="pageinner jumbotron">
+			<table class="tablePerso Tcenter tableList">
+				<tr class="col-xs-12 noPadding josefin">
+					<th class="col-xs-2 DiBlock noPadding Tcenter">NUMERO</th>
+					<th class="col-xs-8 DiBlock noPadding Tcenter">NOM</th>
 					<th class="col-xs-2 DiBlock noPadding Tcenter"></th>
 				</tr>
 

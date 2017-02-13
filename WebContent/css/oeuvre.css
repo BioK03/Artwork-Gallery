@@ -5,6 +5,11 @@ body, html {
     padding: 0;
     overflow: hidden;
     background-size: 100% 100%;
+    background-color: #EEEEEE;
+}
+
+.jumbotron {
+	background-color: #FFFFFF !important;
 }
 
 /* TOOLTIP //////////////////////////////*/
@@ -214,6 +219,15 @@ body, html {
 
 }
 
+/* TABLE ///////////////////////////*/
+.tableList tr:nth-child(2n){
+	background-color: #EEEEEE;
+}
+
+.tableList tr:first-child, .tableList tr:last-child {
+	border-bottom: 1px solid #000000;
+}
+
 /* INPUT ///////////////////////////*/
 .inputStyle {
 	border-left: 1px solid #932611;
@@ -338,19 +352,16 @@ table td[class*=col-], table th[class*=col-] {
 }
 
 .tablePerso tr {
-	border-bottom: 1px solid #000000;
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 }
 
 .pageinner {
 	margin: 0 auto;
-	width: 50%;
+	width: 90%;
 	height: 60%;
 	overflow-y: auto;
 	display: block;
-	padding: 3em;
-
 }
 
 .container {
@@ -373,6 +384,7 @@ table td[class*=col-], table th[class*=col-] {
 .navbar {
 	margin-bottom: 0;
 	z-index: 4;
+	border-radius: 0;
 }
 
 .imgFooter {
@@ -419,9 +431,36 @@ table td[class*=col-], table th[class*=col-] {
 	display: block;
 }
 
+.tableExpo {
+	border-top: 1px solid #EEEEEE;	
+	border-bottom: 1px solid #EEEEEE;
+}
+
+.tableExpo tr:first-child {
+	border-bottom: 1px solid #EEEEEE;
+}
+
 #map {
 	height: 50%;
 	width: 50%;
 	margin: 0 auto;
 	display: block;
 }
+
+/* SVG //////////////////*/
+.svg1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.svg2 {
+	position: absolute;
+	bottom: 10%;
+	right: 0;
+}
+
+.nav-tabs>li {
+	background-color: #EEEEEE;
+}
+

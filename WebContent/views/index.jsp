@@ -6,8 +6,11 @@
 <html>
 	<jsp:include page="layout/head.jsp"></jsp:include>
 	<body>
+		<jsp:include page="layout/nav.jsp"></jsp:include>
+		
 		<div class="containerHome">
-			<img class="imgHome" src="img/fullGalerie.jpg"/>
+			
+			<!-- <img class="imgHome" src="img/fullGalerie.jpg"/> -->
 			<!--<div class="subContainerHomeExpo josefin">
 				EXPO
 			</div>

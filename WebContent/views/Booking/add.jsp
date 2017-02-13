@@ -7,6 +7,7 @@
 
 
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<h1 class="Tcenter josefin"> Réservation d'une oeuvre </h1> 
 	
 		<div class="pageinner Tleft">

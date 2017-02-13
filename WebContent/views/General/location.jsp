@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="lib/leaflet/leaflet.css"/>
 
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<div class="container">
 			<h1 class="Tcenter josefin"> ACCES </h1>
 			<div id="map"></div>

@@ -6,6 +6,7 @@
 
 
 	<body>
+		<jsp:include page="../layout/nav.jsp"></jsp:include>
 		<h1 class="Tcenter josefin"> Suppression d'un adhérent </h1> 
 	
 		<div class="pageinner Tleft">
